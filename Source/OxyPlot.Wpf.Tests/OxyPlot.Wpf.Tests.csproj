@@ -4,6 +4,7 @@
         <UseWPF>true</UseWPF>
         <Description>OxyPlot WPF unit tests</Description>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <OutputType>Library</OutputType>
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\Examples\ExampleLibrary\ExampleLibrary.csproj" />

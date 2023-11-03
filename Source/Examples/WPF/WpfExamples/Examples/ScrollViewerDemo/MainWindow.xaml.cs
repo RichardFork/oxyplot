@@ -27,10 +27,36 @@ namespace ScrollViewerDemo
         {
             this.InitializeComponent();
             var plotModel = new PlotModel { Title = "Plot in ScrollViewer" };
-            plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left });
-            plotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom });
+            plotModel.Axes.Add(new LinearAxis
+                                   {
+                                       Position = AxisPosition.Left,
+                                       IsZoomEnabled = false
+            });
+            plotModel.Axes.Add(new LinearAxis
+                                   {
+                                       Position = AxisPosition.Bottom, Minimum = 0,
+                                       Maximum = 100,
+                                       AbsoluteMinimum = 00,
+                                       AbsoluteMaximum = 200,
+                                       
 
+            });
+            var controller = new PlotController();
+            // controller.BindMouseWheel(PlotCommands.ZoomWheel);
+            controller.BindMouseWheel(OxyModifierKeys.None,
+                new DelegatePlotCommand<OxyMouseWheelEventArgs>(
+                    (view, cont, args) =>
+                        {
+                            var currentAxis = view.ActualModel.DefaultXAxis;
+
+                            var delta = args.Delta;
+                            double change = (currentAxis.Transform(currentAxis.Maximum) - currentAxis.Transform(currentAxis.Minimum)) * delta / 400;
+                            currentAxis.Pan(change);
+                            view.InvalidatePlot(false);
+                        }));
+            
             this.Plot = plotModel;
+            this.plotview.Controller = controller;
             this.DataContext = this;
         }
 

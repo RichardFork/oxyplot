@@ -58,8 +58,9 @@ namespace OxyPlot.Pdf.Tests
         [Test]
         public void Export_Unicode()
         {
+            
             var model = new PlotModel { Title = "Unicode support ☺", DefaultFont = "Arial" };
-            model.Axes.Add(new LinearAxis { Title = "λ", Position = AxisPosition.Bottom });
+            model.Axes.Add(new LinearAxis { Title = "λ", Position = AxisPosition.Bottom, Angle = 90});
             model.Axes.Add(new LinearAxis { Title = "Ж", Position = AxisPosition.Left });
             var exporter = new PdfExporter { Width = 400, Height = 400 };
             using (var stream = File.OpenWrite("Unicode.pdf"))

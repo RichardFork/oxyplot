@@ -94,6 +94,7 @@ namespace ExampleBrowser
 
         private void CoerceRenderer()
         {
+            // PlotView를 제거한다.
             ((IPlotModel)this._PlotModel)?.AttachPlotView(null);
             this.RaisePropertyChanged(nameof(this.SkiaModel));
             this.RaisePropertyChanged(nameof(this.CanvasXamlModel));

@@ -37,8 +37,10 @@ namespace ExampleLibrary
                                           ImageSource = image,
                                           Opacity = 0.2,
                                           Interpolate = false,
+                                          // 중앙 x, y 에 그리기 
                                           X = new PlotLength(0.5, PlotLengthUnit.RelativeToPlotArea),
                                           Y = new PlotLength(0.5, PlotLengthUnit.RelativeToPlotArea),
+                                          // 전체 를 그리기
                                           Width = new PlotLength(1, PlotLengthUnit.RelativeToPlotArea),
                                           HorizontalAlignment = HorizontalAlignment.Center,
                                           VerticalAlignment = VerticalAlignment.Middle

@@ -119,7 +119,7 @@ namespace ExampleLibrary
                     this.StrokeThickness,
                     this.EdgeRenderingMode,
                     null,
-                    LineJoin.Bevel);
+                    LineJoin.Miter);
             }
         }
 
